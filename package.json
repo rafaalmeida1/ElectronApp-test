@@ -11,7 +11,8 @@
     "scripts": {
         "start": "electron .",
         "dev": "vite",
-        "build": "vite build",
+        "prebuild": "rimraf dist release",
+        "build": "vite build && electron-builder --linux",
         "electron:dev": "concurrently \"cross-env BROWSER=none yarn dev\" \"node electron-dev.js\"",
         "electron:build": "yarn build && electron-builder --linux"
     },
@@ -26,21 +27,22 @@
             "buildResources": "assets",
             "output": "release"
         },
-        "linux": {
+        "win": {
             "target": [
-                "AppImage"
+                "portable"
             ],
-            "icon": "assets/icon.png"
+            "icon": "assets/icon.ico"
         }
     },
     "license": "ISC",
     "devDependencies": {
+        "@vitejs/plugin-react": "^1.3.2",
         "concurrently": "^6.2.1",
         "cross-env": "^7.0.3",
         "electron": "^13.2.1",
         "electron-builder": "^22.11.7",
+        "rimraf": "^6.0.1",
         "vite": "^2.5.0",
-        "@vitejs/plugin-react": "^1.3.2",
         "wait-on": "^6.0.1"
     },
     "dependencies": {

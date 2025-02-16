@@ -11,12 +11,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Use Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '16'
         
     - name: Install dependencies
       run: |
@@ -29,7 +29,8 @@ jobs:
         yarn electron-builder --win portable
       
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: windows-build
         path: release/*.exe
+        if-no-files-found: error
