@@ -13,8 +13,8 @@
         "dev": "vite",
         "prebuild": "rimraf dist release",
         "build": "vite build && electron-builder --linux",
-        "electron:dev": "concurrently \"cross-env BROWSER=none yarn dev\" \"node electron-dev.js\"",
-        "electron:build": "yarn build && electron-builder --linux"
+        "electron:build": "yarn build && electron-builder --linux",
+        "electron:dev": "concurrently \"cross-env BROWSER=none yarn dev\" \"node electron-dev.js\""
     },
     "build": {
         "appId": "com.seudominio.oficina-app",
